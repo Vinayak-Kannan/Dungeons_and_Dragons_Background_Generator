@@ -13,6 +13,7 @@ const handleResumeUpload = async (values: CoverLetterValues) => {
         'http://localhost:8000/upload',
         text
     )
+    console.log(response.data)
 }
 
 const Page = ({}) => {

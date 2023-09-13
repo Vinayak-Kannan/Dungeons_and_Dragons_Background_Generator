@@ -1,4 +1,5 @@
 import {Button, Container, TextField} from "@mui/material";
+import {useFormikContext} from "formik";
 import React from "react";
 
 export type CoverLetterValues = {
@@ -6,11 +7,14 @@ export type CoverLetterValues = {
 }
 
 const CoverLetter = () => {
+    const {handleSubmit} = useFormikContext<CoverLetterValues>()
 
     return (
         <>
             <Container>
-                <Button variant="contained">Submit</Button>
+                {/*
+                // @ts-ignore */}
+                <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                 <TextField
                     id="outlined-multiline-static"
                     label="Multiline"

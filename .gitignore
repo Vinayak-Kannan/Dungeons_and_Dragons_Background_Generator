@@ -10,7 +10,7 @@ node_modules
 /coverage
 
 # production
-/clientv3/my-app/build
+/clientv3/build
 
 # misc
 .DS_Store

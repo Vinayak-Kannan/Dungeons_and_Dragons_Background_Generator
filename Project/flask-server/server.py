@@ -1,14 +1,17 @@
+from dotenv import dotenv_values
 from flask import Flask, request
 from flask_cors import cross_origin
 
 app = Flask(__name__)
+config = dotenv_values(".env")
+SECRET_KEY = config.get('SECRET_KEY')
 
 
 # API Route
 @app.route("/ping")
 @cross_origin(origin="*")
 def ping():
-    return "hello"
+    return f'API_KEY = { SECRET_KEY }'
 
 
 @app.route("/upload")

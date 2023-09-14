@@ -35,7 +35,8 @@ def upload():
         user who submitted the cover letter. These keywords will be used to help the user come up with a
         D&D character sheet, including class, abilities, proficiencies, and skills.
         
-        As such, generate keywords that are fantasy related. Do not generate keywords that are technical (e.g., XGBoost)
+        Only generate keywords that are fantasy related and are personality traits a character in D&D would have.
+        Do not generate keywords that are technical (e.g., XGBoost, Machine Learning, NLP, etc.)
         
         You must respond with just a list each keyword in one sentence seperated by commas, like the example below. Do not do anything else:
         Intelligent, Witty, Fast Thinker, ...
@@ -69,9 +70,12 @@ def description():
 
     prompt = {
         "role": "user",
-        "content": """
-            Only provide me a character sheet. Do not give any explanation as to who you are.
-            My cover letter is below:
+        "content": """Only provide me a character sheet. Do not give any explanation as to who you are. Ensure that 
+        you provide ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma), alignment, 
+        a 5 sentence passage on my background, my personality, a list of my starting equipment, suggested spells, 
+        and a 5 sentence description of my appearance. Provide additional pieces of information as well. My cover letter 
+        is below. This character sheet should be fantasy related and describe a character that would belong in the D&D world.
+        Do not mention technical or modern terms like 'FinTech' or 'Machine Learning':
             
         """
         + message["coverLetter"]

@@ -1,6 +1,13 @@
 import Typography from "@mui/material/Typography";
-import {Box, Button, FormControlLabel, FormGroup, Switch} from "@mui/material";
+import {Box, SxProps, Theme} from "@mui/material";
 import React from "react";
+
+const wrapperStyling: SxProps<Theme> = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+    textAlign: "right"
+}
 
 
 type DDDescriptionProps = {
@@ -14,26 +21,13 @@ const DDDescription = ({
     return (
         <Box sx={wrapperStyling}>
             <Typography variant="h6" gutterBottom>
-                Pick relevant characteristics for your character!
+                See your D&D Character Sheet!
             </Typography>
-            {/*
-                // @ts-ignore */}
-            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-            <FormGroup>
-                <div style={keyWordWrapper}>
-                    {
-                        values.keyWords.map((keyWord, index) => (
-                            <div key={index} style={selectWrapperStyling}>
-                                <FormControlLabel
-                                    control={<Switch defaultChecked
-                                                     onChange={() => setFieldValue(`keyWords[${index}].isSelected`, !keyWord.isSelected)}/>}
-                                    label={keyWord.keyWord}
-                                />
-                            </div>
-                        ))
-                    }
-                </div>
-            </FormGroup>
+            <Typography variant={"overline"} display={"block"} sx={{whiteSpace: "pre-line"}} gutterBottom>
+                {description}
+            </Typography>
         </Box>
     )
 }
+
+export default DDDescription

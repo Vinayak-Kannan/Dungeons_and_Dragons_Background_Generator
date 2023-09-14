@@ -21,7 +21,7 @@ const CoverLetter = () => {
     return (
         <>
             <Box sx={wrapperStyling}>
-                <Typography variant="h4" gutterBottom>
+                <Typography variant="h6" gutterBottom>
                     Paste your cover letter below!
                 </Typography>
                 {/*

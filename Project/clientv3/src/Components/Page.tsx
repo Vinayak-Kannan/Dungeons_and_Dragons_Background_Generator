@@ -36,6 +36,7 @@ const handleKeyWordsSelected = async (values: KeyWordsValues) => {
 const Page = ({}) => {
 
     const [keyWordPairings, setKeyWordPairings] = useState<KeyWordValuePair[]>([])
+    const [ddDescription, setDDDescription] = useState("")
 
     // @ts-ignore
     return (

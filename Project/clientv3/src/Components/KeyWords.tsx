@@ -7,7 +7,7 @@ const wrapperStyling: SxProps<Theme> = {
     display: "flex",
     flexDirection: "column",
     gap: "15px",
-    textAlign: "left"
+    textAlign: "center"
 }
 
 const selectWrapperStyling: CSSProperties = {
@@ -35,8 +35,8 @@ const KeyWords = () => {
     return (
         <>
             <Box sx={wrapperStyling}>
-                <Typography variant="h4" gutterBottom>
-                    Pick Key Words and submit
+                <Typography variant="h6" gutterBottom>
+                    Pick relevant characteristics for your character!
                 </Typography>
                 {/*
                 // @ts-ignore */}

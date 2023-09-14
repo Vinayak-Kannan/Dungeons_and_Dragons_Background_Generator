@@ -35,7 +35,44 @@ def upload():
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt + message["data"]}],
-        temperature=0.7,
+        temperature=2,
+    )
+    return response.choices[0].message.content
+
+
+@app.route("/description", methods=["POST"])
+@cross_origin(origin="*")
+def description():
+    system = {
+        "role": "system",
+        "content": """
+            You are a world-class professional DM for D&D 5e and an award-winning fantasy author.
+            You will help me create a character sheet / backstory for me for a new D&D character.
+            I'll provide you my cover letter and several keywords I want you to emphasize in the character.
+            We’ll be using the standard D&D 5th edition rules for character creation found in the Player’s Handbook
+            as well as Mythic Odysseys of Theros and Xanathar’s Guide to Everything.
+        """,
+    }
+    message = request.get_json()
+
+    prompt = {
+        "role": "user",
+        "content": """
+            My cover letter is below:
+            
+        """
+        + message["coverLetter"]
+        + """
+        
+        and the keywords I want you to focus on when creating my character's personality are:
+        
+        """
+        + message["keyWords"],
+    }
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[system, prompt],
+        temperature=2,
     )
     return response.choices[0].message.content
 

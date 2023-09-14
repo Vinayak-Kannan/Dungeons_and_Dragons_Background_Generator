@@ -40,7 +40,8 @@ const KeyWords = () => {
                 </Typography>
                 {/*
                 // @ts-ignore */}
-                <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+                <Button variant="contained" onClick={handleSubmit}
+                        disabled={values.keyWords.length === 0}>Submit</Button>
                 <FormGroup>
                     <div style={keyWordWrapper}>
                         {

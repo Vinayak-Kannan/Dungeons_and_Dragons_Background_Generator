@@ -73,9 +73,10 @@ def description():
         "content": """Only provide me a character sheet. Do not give any explanation as to who you are. Ensure that 
         you provide ability scores (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma), alignment, 
         a 5 sentence passage on my background, my personality, a list of my starting equipment, suggested spells, 
-        and a 5 sentence description of my appearance. Provide additional pieces of information as well. My cover letter 
-        is below. This character sheet should be fantasy related and describe a character that would belong in the D&D world.
-        Do not mention technical or modern terms like 'FinTech' or 'Machine Learning':
+        and a 5 sentence description of my appearance. Provide additional pieces of information as well. My cover 
+        letter is below. Be creative and feel free to come up with a fantastical character. The character sheet should be 
+        fantasy related and describe a character that would belong in the D&D world. Do not mention technical or 
+        modern terms like 'FinTech' or 'Machine Learning'. These do not exist in D&D:
             
         """
         + message["coverLetter"]

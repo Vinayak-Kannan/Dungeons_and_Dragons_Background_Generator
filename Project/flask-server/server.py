@@ -19,7 +19,6 @@ def ping():
 @cross_origin(origin="*")
 def upload():
     message = request.get_json()
-    print(message["data"])
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": message["data"]}],

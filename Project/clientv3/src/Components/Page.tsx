@@ -4,8 +4,12 @@ import axios from "axios";
 import CoverLetter, {CoverLetterValues} from "./CoverLetter";
 import {Formik} from "formik";
 import React from 'react';
+import {Box, SxProps, Theme} from "@mui/material";
 
 // Styling
+const pageWrapper: SxProps<Theme> = {
+    margin: "30px"
+}
 
 const handleResumeUpload = async (values: CoverLetterValues) => {
     const text = values.coverLetter
@@ -18,27 +22,29 @@ const handleResumeUpload = async (values: CoverLetterValues) => {
 const Page = ({}) => {
 
     return (
-        <Grid container spacing={2}>
-            <Grid xs={12}>
-                <Header/>
+        <Box sx={pageWrapper}>
+            <Grid container spacing={2}>
+                <Grid xs={12}>
+                    <Header/>
+                </Grid>
+                <Grid xs={4}>
+                    <Formik
+                        initialValues={{} as CoverLetterValues}
+                        onSubmit={async (values, formikHelpers) => {
+                            await handleResumeUpload(values)
+                        }}
+                    >
+                        <CoverLetter/>
+                    </Formik>
+                </Grid>
+                <Grid xs={4}>
+                    Pick Key Words and submit
+                </Grid>
+                <Grid xs={4}>
+                    See D&D description
+                </Grid>
             </Grid>
-            <Grid xs={4}>
-                <Formik
-                    initialValues={{} as CoverLetterValues}
-                    onSubmit={async (values, formikHelpers) => {
-                        await handleResumeUpload(values)
-                    }}
-                >
-                    <CoverLetter/>
-                </Formik>
-            </Grid>
-            <Grid xs={4}>
-                Pick Key Words and submit
-            </Grid>
-            <Grid xs={4}>
-                See D&D description
-            </Grid>
-        </Grid>
+        </Box>
     );
 }
 

@@ -5,7 +5,7 @@ from flask_cors import cross_origin
 
 app = Flask(__name__)
 config = dotenv_values(".env")
-openai.api_key = config.get('SECRET_KEY')
+openai.api_key = config.get("SECRET_KEY")
 
 
 # API Route
@@ -15,13 +15,14 @@ def ping():
     return f'API_KEY = { "SECRET_KEY" }'
 
 
-@app.route("/upload")
+@app.route("/upload", methods=["POST"])
 @cross_origin(origin="*")
 def upload():
-    message = request.get_data().decode("utf-8")
-    response = openai.Completion.create(
-        engine="davinci",
-        prompt=message,
+    message = request.get_json()
+    print(message["data"])
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": message["data"]}],
         temperature=0.7,
     )
     return response.choices[0].message.content

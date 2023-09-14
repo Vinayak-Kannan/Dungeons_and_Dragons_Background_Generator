@@ -11,9 +11,8 @@ const handleResumeUpload = async (values: CoverLetterValues) => {
     const text = values.coverLetter
     const response = await axios.post(
         'http://localhost:8000/upload',
-        text
+        {data: text}
     )
-    console.log(response.data)
 }
 
 const Page = ({}) => {

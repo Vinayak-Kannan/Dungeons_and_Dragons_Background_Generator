@@ -7,7 +7,7 @@ export type CoverLetterValues = {
 }
 
 const CoverLetter = () => {
-    const {handleSubmit} = useFormikContext<CoverLetterValues>()
+    const {handleSubmit, setFieldValue} = useFormikContext<CoverLetterValues>()
 
     return (
         <>
@@ -21,6 +21,9 @@ const CoverLetter = () => {
                     multiline
                     rows={10}
                     defaultValue="Default Value"
+                    onChange={async (e) => {
+                        await setFieldValue("coverLetter", e.target.value)
+                    }}
                     name="coverLetter"
                 />
             </Container>
